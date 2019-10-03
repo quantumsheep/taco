@@ -6,8 +6,6 @@ project(taco
     DESCRIPTION "Terminal Absolute Control and Owning"
 )
 
-include(GNUInstallDirs)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
