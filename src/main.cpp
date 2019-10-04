@@ -4,19 +4,8 @@
 #include <string>
 #include <vector>
 
-enum class Input
-{
-    Enter = 10,
-
-    UpArrow = 65,
-    DownArrow = 66,
-    RightArrow = 67,
-    LeftArrow = 68,
-};
-
 int main()
 {
-
     taco::dialog dialog("Hello!");
 
     bool running = true;
@@ -41,19 +30,24 @@ int main()
 
         char touch = taco::getch();
 
-        if (touch == static_cast<char>(Input::UpArrow))
+        if (touch == taco::input::up_arrow)
         {
             dialog.up();
         }
 
-        if (touch == static_cast<char>(Input::DownArrow))
+        if (touch == taco::input::down_arrow)
         {
             dialog.down();
         }
 
-        if (touch == static_cast<char>(Input::Enter))
+        if (touch == taco::input::enter)
         {
             dialog.execute_selected();
+        }
+
+        if (touch == taco::input::ctrl_c)
+        {
+            running = false;
         }
     }
 
