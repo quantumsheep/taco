@@ -17,6 +17,8 @@ enum class input
 #else
 enum class input
 {
+    ctrl_c = -1,
+
     enter = 10,
 
     up_arrow = 65,
