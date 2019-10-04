@@ -3,6 +3,8 @@
 #include <iostream>
 
 #ifdef _WIN32
+#include <windows.h>
+#include <conio.h>
 #else
 #include <termios.h>
 #include <unistd.h>
