@@ -16,18 +16,15 @@ public:
     };
 
 private:
-    std::string question;
     std::vector<answer> possibilities;
 
     size_t position = 0;
 
 public:
-    dialog(std::string question_) : question(question_){};
+    std::string question;
 
-    inline void set_question(std::string question_)
-    {
-        this->question = question_;
-    }
+public:
+    dialog(std::string question_) : question(question_){};
 
     inline void add_possibility(std::string value, const std::function<void()> &callback)
     {
