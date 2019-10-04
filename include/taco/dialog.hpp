@@ -29,7 +29,7 @@ public:
         this->question = question_;
     }
 
-    inline void add_possibility(std::string value, std::function<void()> callback)
+    inline void add_possibility(std::string value, const std::function<void()> &callback)
     {
         possibilities.push_back({value, callback});
     }
