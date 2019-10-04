@@ -29,3 +29,31 @@ void taco::dialog::display()
         std::cout << (i == this->position ? "> " : "  ") << this->possibilities[i].content << std::endl;
     }
 }
+
+void taco::dialog::run()
+{
+    bool running = true;
+
+    while (running)
+    {
+        this->display();
+
+        char touch = taco::getch();
+
+        if (touch == this->up_key)
+        {
+            this->up();
+        }
+
+        if (touch == this->down_key)
+        {
+            this->down();
+        }
+
+        if (touch == this->select_key)
+        {
+            running = false;
+            this->execute_selected();
+        }
+    }
+}

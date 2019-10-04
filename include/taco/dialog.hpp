@@ -1,5 +1,7 @@
 #pragma once
 
+#include <taco/input.hpp>
+
 #include <string>
 #include <vector>
 #include <functional>
@@ -23,6 +25,10 @@ private:
 public:
     std::string question;
 
+    taco::input up_key = taco::input::up_arrow;
+    taco::input down_key = taco::input::down_arrow;
+    taco::input select_key = taco::input::enter;
+
 public:
     dialog(std::string question_) : question(question_){};
 
@@ -40,5 +46,6 @@ public:
     }
 
     void display();
+    void run();
 };
 } // namespace taco
