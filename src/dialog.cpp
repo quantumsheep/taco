@@ -32,9 +32,7 @@ void taco::dialog::display()
 
 void taco::dialog::run()
 {
-    bool running = true;
-
-    while (running)
+    while (true)
     {
         this->display();
 
@@ -52,8 +50,8 @@ void taco::dialog::run()
 
         if (key == this->select_key)
         {
-            running = false;
             this->execute_selected();
+            break;
         }
     }
 }
