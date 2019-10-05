@@ -27,14 +27,14 @@ enum class input
     left_arrow = 68,
 };
 #endif
+} // namespace taco
 
-inline bool operator==(const char &c, const input &in)
+inline bool operator==(const char &c, const taco::input &in)
 {
     return c == static_cast<char>(in);
 }
 
-inline bool operator!=(const char &c, const input &in)
+inline bool operator!=(const char &c, const taco::input &in)
 {
     return !(c == in);
 }
-} // namespace taco
