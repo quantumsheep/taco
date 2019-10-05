@@ -11,7 +11,7 @@ TACO implements utilities that ease the development of terminal applications, ga
 
 ## Get the source
 ```bash
-git clone https://github.com/assimp/assimp.git
+git clone https://github.com/quantumsheep/taco.git
 ```
 or via `git submodule`:
 ```bash
