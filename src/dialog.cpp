@@ -1,5 +1,5 @@
-#include <taco/dialog.hpp>
 #include <taco/core.hpp>
+#include <taco/dialog.hpp>
 
 #include <iostream>
 
@@ -38,19 +38,19 @@ void taco::dialog::run()
     {
         this->display();
 
-        char touch = taco::getch();
+        char key = taco::getch();
 
-        if (touch == this->up_key)
+        if (key == this->up_key)
         {
             this->up();
         }
 
-        if (touch == this->down_key)
+        if (key == this->down_key)
         {
             this->down();
         }
 
-        if (touch == this->select_key)
+        if (key == this->select_key)
         {
             running = false;
             this->execute_selected();
