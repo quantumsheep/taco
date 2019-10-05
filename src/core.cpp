@@ -3,8 +3,8 @@
 #include <iostream>
 
 #ifdef _WIN32
-#include <windows.h>
 #include <conio.h>
+#include <windows.h>
 #else
 #include <termios.h>
 #include <unistd.h>
@@ -24,25 +24,20 @@ char taco::getch()
 #ifdef _WIN32
     return _getch();
 #else
-    // The following code attempts to manually reproduce the same behaviour as the
-    // getch function from Windows' conio.h
-
     // Cache the existing terminal attributes
-    struct termios cachedAttributes, customAttributes;
-    tcgetattr(STDIN_FILENO, &cachedAttributes);
+    termios original_attr;
+    tcgetattr(STDIN_FILENO, &original_attr);
 
-    // Copy them, and change the flags needed to achieve getch-style behaviour
-    customAttributes = cachedAttributes;
-    customAttributes.c_lflag &= ~(ICANON | ECHO);
+    termios new_attr = original_attr;
+    new_attr.c_lflag &= ~(ICANON | ECHO);
 
-    // Set the attributes to the new ones, read a character with getchar
-    tcsetattr(STDIN_FILENO, TCSANOW, &customAttributes);
+    // Use the new attributes
+    tcsetattr(STDIN_FILENO, TCSANOW, &new_attr);
     int ch = getchar();
 
-    // Restore the original terminal attribute setup
-    tcsetattr(STDIN_FILENO, TCSANOW, &cachedAttributes);
+    // Restore the original attributes
+    tcsetattr(STDIN_FILENO, TCSANOW, &original_attr);
 
-    // Return the character that was read
     return ch;
-#endif // _WIN32
+#endif
 }
